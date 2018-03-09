@@ -4,83 +4,83 @@ describe "Arrays" do
 
   it 'should demonstrate array creation' do
     empty_array = Array.new
-    empty_array.class.should eql __
-    empty_array.size.should eql __
+    expect(empty_array.class).to eql Array
+    expect(empty_array.size).to eql 0
   end
 
   it "should demonstrate array literals" do
     array = Array.new
-    array.should eql []
+    expect(array).to eql []
 
     array[0] = 1
-    array.should eql [1]
+    expect(array).to eql [1]
 
     array[1] = 2
-    array.should eql [1, __]
+    expect(array).to eql [1, 2]
 
     array << 333
-    array.should eql __
+    expect(array).to eql [1, 2, 333]
   end
 
   it "should demonstrate accessing array elements" do
     array = [:peanut, :butter, :and, :jelly]
 
-    array[0].should eql __
-    array.first.should eql __
-    array[3].should eql __
-    array.last.should eql __
-    array[-1].should eql __
-    array[-3].should eql __
+    expect(array[0]).to eql :peanut
+    expect(array.first).to eql :peanut
+    expect(array[3]).to eql :jelly
+    expect(array.last).to eql :jelly
+    expect(array[-1]).to eql :jelly
+    expect(array[-3]).to eql :butter
   end
 
   it "should demonstrate slicing arrays" do
     array = [:peanut, :butter, :and, :jelly]
 
-    array[0,1].should eql __
-    array[0,2].should eql __
-    array[2,2].should eql __
-    array[2,20].should eql __
-    array[4,0].should eql __
-    array[4,100].should eql __
-    array[5,0].should eql __
+    expect(array[0,1]).to eql [:peanut]
+    expect(array[0,2]).to eql [:peanut, :butter]
+    expect(array[2,2]).to eql [:and, :jelly]
+    expect(array[2,20]).to eql [:and, :jelly]
+    expect(array[4,0]).to eql []
+    expect(array[4,100]).to eql []
+    expect(array[5,0]).to eql nil
   end
 
   it "should show arrays and ranges" do
     array = [:peanut, :butter, :and, :jelly]
 
-    (1..5).class.should eql __
-    (1..5).should_not eql [1,2,3,4,5]
-    (1..5).to_a.should eql __
-    (1...5).to_a.should eql __
+    expect((1..5).class).to eql Range
+    expect((1..5)).not_to eql [1,2,3,4,5]
+    expect((1..5).to_a).to eql [1,2,3,4,5]
+    expect((1...5).to_a).to eql [1,2,3,4]
   end
 
   it "should demonstrate slicing with ranges" do
     array = [:peanut, :butter, :and, :jelly]
 
-    array[0..2].should eql __
-    array[0...2].should eql __
-    array[2..-1].should eql __
+    expect(array[0..2]).to eql [:peanut,:butter,:and]
+    expect(array[0...2]).to eql [:peanut,:butter]
+    expect(array[2..-1]).to eql [:and,:jelly]
   end
 
   it "should demonstrate pushing and popping arrays" do
     array = [1,2]
     array.push(:last)
 
-    array.should eql __
+    expect(array).to eql [1,2,:last]
 
     popped_value = array.pop
-    popped_value.should eql __
-    array.should eql __
+    expect(popped_value).to eql :last
+    expect(array).to eql [1,2]
   end
 
   it "should demonstrate shifting arrays" do
     array = [1,2]
     array.unshift(:first)
 
-    array.should eql __
+    expect(array).to eql [:first,1,2]
 
     shifted_value = array.shift
-    shifted_value.should eql __
-    array.should eql __
+    expect(shifted_value).to eql :first
+    expect(array).to eql [1,2]
   end
 end
