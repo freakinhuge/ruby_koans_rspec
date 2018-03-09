@@ -3,7 +3,7 @@ require "spec_helper"
 describe "Nil" do
 
   it "should show that nil is an object" do
-    nil.is_a?(Object).should == __
+    expect(nil.is_a?(Object) == true)
   end
 
   it "should not cause null pointer errors when calling methods on nil" do
@@ -14,18 +14,19 @@ describe "Nil" do
       nil.some_method_nil_doesnt_know_about
     rescue Exception => ex
       # What exception has been caught?
-      ex.class.should == __
+      expect(ex.class == NilClass)
 
       # What message was attached to the exception?
       # (HINT: replace __ with part of the error message.)
-      ex.message.should =~ /__/
+      expect(ex.message =~ /undefined method
+             `some_method_nil_doesnt_know_about' for nil:NilClass`/)
     end
   end
 
   it "should display methods nil has defined for it" do
-    nil.nil?.should eq __
-    nil.to_s.should eq __
-    nil.inspect.should eq __
+    expect(nil.nil?).to eq true
+    expect(nil.to_s).to eq ""
+    expect(nil.inspect).to eq "nil"
 
     # THINK ABOUT IT:
     #
