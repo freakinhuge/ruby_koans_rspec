@@ -14,12 +14,12 @@ describe "Nil" do
       nil.some_method_nil_doesnt_know_about
     rescue Exception => ex
       # What exception has been caught?
-      expect(ex.class).to eql NilClass
+      expect(ex.class).to eql NoMethodError
 
       # What message was attached to the exception?
       # (HINT: replace __ with part of the error message.)
-      expect(ex.message).to eql /undefined method
-             `some_method_nil_doesnt_know_about' for nil:NilClass`/
+      expect(ex.message).to eql "undefined method " +
+        "`some_method_nil_doesnt_know_about' for nil:NilClass"
     end
   end
 
