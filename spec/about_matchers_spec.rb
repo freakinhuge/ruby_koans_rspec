@@ -18,7 +18,7 @@ describe "Matchers" do
     expected_value = 2
     actual_value = 1 + 1
 
-    expect(actual_value == expected_value)
+    expect(actual_value).to eql expected_value
   end
 
   it "should allow matching of variables using a better way" do
